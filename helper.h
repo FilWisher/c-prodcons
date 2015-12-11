@@ -54,7 +54,6 @@ void sem_wait (int, short unsigned int);
 void sem_wait_zero (int, short unsigned int);
 int sem_timewait (int, short unsigned int, int);
 void sem_signal (int, short unsigned int);
-void sem_signal_undo (int, short unsigned int);
 int sem_close (int);
 QUEUE *attach_to_queue(int);
 void detach(int, void *);

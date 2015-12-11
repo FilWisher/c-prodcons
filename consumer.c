@@ -40,13 +40,8 @@ int main (int argc, char *argv[])
     exit(1);
   }
 
-  /* 
-      *** SIGNAL A CONSUMER IS IN EXISTENCE ***
-      using signal_undo to count number of consumers
-      makes sure that if consumer crashes, we don't leave 
-      a zombie producer in the system. 
-  */
-  sem_signal_undo(sem_id, CONSUMERS);
+  /* signal a consumer is in existence */
+  sem_signal(sem_id, CONSUMERS);
   
   /* start time of consumer activity */  
   start = (int)time(NULL);

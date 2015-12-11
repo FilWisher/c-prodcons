@@ -8,7 +8,6 @@
  * sem_wait_zero - Waits until specified semaphore is 0
  * sem_timewait - Waits on a semaphore for a particular time
  * sem_signal - Signals a semaphore (akin to up ()) in the semaphore array
- * sem_signal_undo - automatically undoes semaphore changes on process exit
  * sem_close - Destroy the semaphore array
  ******************************************************************/
 
@@ -107,15 +106,6 @@ void sem_signal (int id, short unsigned int num)
   };
   semop (id, op, 1);
 }
-
-void sem_signal_undo (int id, short unsigned int num)
-{
-  struct sembuf op[] = {
-    {num, 1, SEM_UNDO}
-  };
-  semop (id, op, 1);
-}
-
 
 int sem_close (int id)
 {
